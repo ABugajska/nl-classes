@@ -1,26 +1,63 @@
 <h3>Zgłoś nieobecność</h3>
-<form [formGroup]="mainForm" novalidate>
+<form [formGroup]="form" novalidate (submit)='onSubmit()'>
     <div class="form-group">
         <label class="center-block">Name:
-            <input class="form-control" formControlName="name">
+            <input id="name" class="form-control" formControlName="name" required>
+            <div ngxErrors="name">
+                <div ngxError="required" when="touched" class="alert alert-danger">
+                    <span class="">Name is required.</span> 
+                </div>
+            </div>
         </label>
     </div>
-
     <div class="form-group">
         <label class="center-block">Surname:
-            <input class="form-control" formControlName="surname">
+            <input class="form-control" formControlName="surname" required>
+            <div ngxErrors="surname">
+                <div ngxError="required" when="touched" class="alert alert-danger">
+                    <span class="">Surname is required.</span> 
+                </div>
+            </div>
         </label>
     </div>
 
     <div class="form-group">
         <label class="center-block">Phone:
-            <input class="form-control" formControlName="phone">
+            <input class="form-control" formControlName="phone" required>
+            <div ngxErrors="phone">
+                <div ngxError="required" when="touched" class="alert alert-danger">
+                    <span class="">Phone is required.</span> 
+                </div>
+            </div>
         </label>
     </div>
 
     <div class="form-group">
         <label class="center-block">E-mail:
-            <input class="form-control" formControlName="email">
+            <input class="form-control" formControlName="email" required>
+            <div ngxErrors="email">
+                <div ngxError="required" when="touched" class="alert alert-danger">
+                    <span class="">E-mail is required.</span> 
+                </div>
+            </div>
         </label>
     </div>
+    <div class="form-group">
+        
+        <input type="text" class="form-control" placeholder="Datepicker" bsDatepicker formControlName="date" required/>
+        <div ngxErrors="date">
+            <div ngxError="required" when="touched" class="alert alert-danger">
+                <span class="">Date is required.</span> 
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <timepicker formControlName="mytime" required></timepicker>
+        <div ngxErrors="mytime">
+            <div ngxError="required" when="touched" class="alert alert-danger">
+                <span class="">Time is required.</span> 
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Wyślij</button>
 </form>

@@ -1,0 +1,63 @@
+<h3>Zgłoś nieobecność</h3>
+<form [formGroup]="form" novalidate (submit)='onSubmit()'>
+    <div class="form-group">
+        <label class="center-block">Name:
+            <input class="form-control" formControlName="firstName">
+            <div ngxErrors="firstName">
+                <div ngxError="required" when="touched" class="alert alert-danger">
+                    <span class="">Name is required.</span> 
+                </div>
+            </div>
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="center-block">Surname:
+            <input class="form-control" formControlName="lastName">
+            <div ngxErrors="lastName">
+                <div ngxError="required" when="touched" class="alert alert-danger">
+                    <span class="">Surname is required.</span> 
+                </div>
+            </div>
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label class="center-block">Phone:
+            <input class="form-control" formControlName="phone">
+            <div ngxErrors="phone">
+                <div ngxError="required" when="touched" class="alert alert-danger">
+                    <span class="">Phone is required.</span> 
+                </div>
+            </div>
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label class="center-block">E-mail:
+            <input class="form-control" formControlName="email">
+            <div ngxErrors="email">
+                <div ngxError="required" when="touched" class="alert alert-danger">
+                    <span class="">E-mail is required.</span> 
+                </div>
+            </div>
+        </label>
+    </div>
+    <div class="form-group">
+        
+        <input type="text" class="form-control" placeholder="Datepicker" bsDatepicker formControlName="date"/>
+        <div ngxErrors="date">
+            <div ngxError="required" when="touched" class="alert alert-danger">
+                <span class="">Date is required.</span> 
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <timepicker formControlName="time" [showMeridian]="ismeridian" [minuteStep]="15" [max]="maxTime" [min]="minTime"></timepicker>
+        <div ngxErrors="time">
+            <div ngxError="required" when="touched" class="alert alert-danger">
+                <span class="">Time is required.</span> 
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Wyślij</button>
+</form>

@@ -1,5 +1,5 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
     selector: 'absence-form',
@@ -13,18 +13,24 @@ export class AbsenceFormComponent {
     
     form: FormGroup;
 
+    public ismeridian: boolean = false;
+    public maxTime: Date = new Date();
+    public minTime: Date = new Date();
+
     constructor(private fb: FormBuilder ){
         this.createForm();
+        this.maxTime.setHours(21);
+        this.minTime.setHours(6, 0, 0, 0);
     }
 
     createForm() {
         this.form = this.fb.group({
-            name: '',
-            surname: '',
-            phone: '',
-            email: '',
-            date: null,
-            mytime: null
+            firstName: ['', Validators.required],
+            lastName: ['', Validators.required],
+            phone: ['', Validators.required],
+            email: ['', Validators.required],
+            date: [null, Validators.required],
+            time: [this.getInitialTime(), Validators.required]
         })
     }
 
@@ -39,13 +45,19 @@ export class AbsenceFormComponent {
     validateAllFormFields(formGroup: FormGroup) {
         Object.keys(formGroup.controls).forEach(field => {
         const control = formGroup.get(field);
-        if (control instanceof FormControl) {
-            control.markAsTouched({ onlySelf: true });
-        } else if (control instanceof FormGroup) {
-            this.validateAllFormFields(control);
-        }
-    });
-  }
+            if (control instanceof FormControl) {
+                control.markAsTouched({ onlySelf: true });
+            } else if (control instanceof FormGroup) {
+                this.validateAllFormFields(control);
+            }
+        });
+    }
+
+    private getInitialTime() {
+        const date = new Date();
+        date.setMinutes(0, 0, 0);
+        return date;
+    }
 
     ngOnInit() {
         

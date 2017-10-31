@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import {AbsenceFormComponent} from './components/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
@@ -10,11 +9,8 @@ import {DashboardComponent} from './containers/dashboard/dashboard.component';
 import {FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import {appRoutes} from './app.routes';
 
-
-const appRoutes: Routes = [
-  { path: '', component: DashboardComponent }
-];
 
 @NgModule({
   declarations: [
@@ -24,14 +20,12 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(
-      appRoutes
-    ),
     TimepickerModule.forRoot(),
     BsDatepickerModule.forRoot(),
     ReactiveFormsModule,
     NgxErrorsModule,
-    FormsModule
+    FormsModule,
+    appRoutes
   ],
   providers: [],
   bootstrap: [AppComponent]

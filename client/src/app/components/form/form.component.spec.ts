@@ -3,6 +3,7 @@ import { AbsenceFormComponent } from './form.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { TimepickerModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap';
+
 describe('FormAbsenceComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -18,7 +19,7 @@ describe('FormAbsenceComponent', () => {
   }));
   it('should create the form', async(() => {
     const fixture = TestBed.createComponent(AbsenceFormComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    const form = fixture.debugElement.componentInstance;
+    expect(form).toBeTruthy();
   }));
 });

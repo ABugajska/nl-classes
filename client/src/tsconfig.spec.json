@@ -12,6 +12,9 @@
   },
   "files": [
     "test.ts"
+    // { "pattern": "node_modules/reflect-metadata/Reflect.js", "include": true },
+    // { "pattern": "src/*.ts", "include": true },
+    // { "pattern": "tests/**/*Spec.ts", "include": true }
   ],
   "include": [
     "**/*.spec.ts",
